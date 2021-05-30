@@ -7,18 +7,23 @@ const FULL_HEART = '♥'
 
 let likeHeart = document.getElementsByClassName('like-glyph')
 for (i=0; i<likeHeart.length; i++){
-  let likeHeartInner = likeHeart[i].innerHTML
-  likeHeart[i].addEventListener('click', function(){
+  likeHeartI = likeHeart[i]
+  console.log(likeHeartI)
+  likeHeartI.addEventListener('click', function(){
+    console.log(likeHeartI)
+    likeHeartI.innerHTML = FULL_HEART
     mimicServerCall()
-    .then(response => response.json())
-    .then(()=>{})
+    .then(resolve => {
+      console.log(resolve)
+      console.log(likeHeartI.innerHTML)
+    })
     .catch((reject) => {
       let modal = document.getElementById('modal')
       modal.removeAttribute('class', 'hidden')
       modal.getElementsByTagName('p').innerHTML = reject
       console.log(reject)
   })
-
+return mimicServerCall()
 })
 }
 
