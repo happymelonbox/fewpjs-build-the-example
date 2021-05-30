@@ -8,19 +8,19 @@ const FULL_HEART = '♥'
 let likeHeart = document.getElementsByClassName('like-glyph')
 for (i=0; i<likeHeart.length; i++){
   likeHeartI = likeHeart[i]
-  console.log(likeHeartI)
   likeHeartI.addEventListener('click', function(){
-    console.log(likeHeartI)
-    likeHeartI.innerHTML = FULL_HEART
     mimicServerCall()
     .then(resolve => {
+      alert("You liked this post!")
       console.log(resolve)
-      console.log(likeHeartI.innerHTML)
+      console.log(likeHeartI.innerHTML = FULL_HEART)
+      likeHeartI.setAttribute('class', 'activated-heart')
     })
     .catch((reject) => {
       let modal = document.getElementById('modal')
       modal.removeAttribute('class', 'hidden')
       modal.getElementsByTagName('p').innerHTML = reject
+      alert("Random server error!")
       console.log(reject)
   })
 return mimicServerCall()
