@@ -19,11 +19,14 @@ for (i=0; i<likeHeart.length; i++){
     .catch((reject) => {
       let modal = document.getElementById('modal')
       modal.removeAttribute('class', 'hidden')
-      modal.getElementsByTagName('p').innerHTML = reject
+      document.getElementById('modal-message').innerHTML = reject
       alert("Random server error!")
       console.log(reject)
+      setTimeout(function(){
+        modal.setAttribute('class', 'hidden')
+      }, 5000)
   })
-return mimicServerCall()
+
 })
 }
 
